@@ -1,5 +1,4 @@
 import './App.css';
-import PostItem from "./component/PostItem";
 import {useState} from "react";
 import PostList from "./component/PostList";
 import {Button, TextField} from "@mui/material";
@@ -14,46 +13,39 @@ function App() {
         {id: 6, title:'DYBA', body:' HIPPI',date: 987},
         {id: 7, title:'DYBA', body:' HIPPI',date: 888},
     ])
-    const [title, setTitle]= useState('')
-    const [body, setBody]= useState('')
-    const [date, setDate] = useState('')
+    const [post, setPost]=useState({title:'', body:'', date:''})
+
+    // const [title, setTitle]= useState('')
+    // const [body, setBody]= useState('')
+    // const [date, setDate] = useState('')
     function addNewPost(e) {
         e.preventDefault()
-        const newPost = {
-            id: Date.now(),
-            title,
-            body,
-            date,
-        };
-        console.log(date)
         //не изменяем состояние напрямую. в новый массив разворачиваем старый
         // и в новый пост
-        setPosts([...posts, newPost])
-        setTitle('')
-        setBody('')
-        setDate('')
+        setPosts([...posts, {...post, id:Date.now()}])
+        setPost({title: '', body:'', date:''})
     }
 
     return (
         <div className="App">
             <form className={'form'}>
                 <TextField
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
+                    value={post.title}
+                    onChange={e => setPost({...post, title: e.target.value})}//объект в который разворачиваем старый пост (все поля, но перетераем нужный пост)
                     label='Заголовок'
                     color="secondary"
                     variant='filled'
                 />
                 <TextField
-                    value={body}
-                    onChange={e => setBody(e.target.value)}
+                    value={post.body}
+                    onChange={e => setPost({...post, body: e.target.value})}
                     label='Текст'
                     color='secondary'
                     variant='filled'
                 />
                 <TextField
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
+                    value={post.date}
+                    onChange={e => setPost({...post, date: e.target.value})}
                     color="secondary"
                     variant='filled'
                     type={'date'}
