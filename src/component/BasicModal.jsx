@@ -1,15 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Box, Button, Modal} from "@mui/material";
 import PostForm from "./PostForm";
 
-const BasicModal = ({createPost}) => {
-    const [open, setOpen] = useState(false);
-    // const createPost = (newPost)=>{
-    //     setPosts([...posts, newPost])
-    // }
-
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+const BasicModal = ({createPost, handleOpen, handleClose, open}) => {
     const style = {
         position: 'absolute',
         top: '50%',
