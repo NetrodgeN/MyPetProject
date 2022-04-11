@@ -46,4 +46,6 @@
   align-content: center;
   justify-content: center;
 }
-
+.empty__post{
+  text-align: center;
+}

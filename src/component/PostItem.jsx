@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, IconButton} from "@mui/material";
+import {IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 
 const PostItem = (props) => {
@@ -10,7 +10,9 @@ const PostItem = (props) => {
                 <div> {props.post.body}</div>
                 <div>{props.post.date}</div>
             </div>
-            <IconButton aria-label='delete' size={'small'}>
+            <IconButton aria-label='delete' size={'small'}
+            onClick={()=> props.remove(props.post)}
+            >
                 <Delete fontSize={'inherit'}/>
             </IconButton>
         </div>
