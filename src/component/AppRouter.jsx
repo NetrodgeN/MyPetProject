@@ -3,14 +3,16 @@ import {Route, Routes} from "react-router-dom";
 import About from "../pages/About";
 import Posts from "../pages/Posts";
 import Error from "../pages/Error";
+import PostIdPage from "../pages/PostIdPage";
 
 const AppRouter = () => {
     return (
         <Routes>
             <Route path="/about" element={<About/>}/>
-            <Route path="/posts" element={<Posts/>}/>
+            <Route exact path="/posts" element={<Posts/>}/>
+            <Route exact path="/posts/:id" element={<PostIdPage/>}/>
             <Route path="/404" element={<Error/>}/>
-            {/*<Route path='*' elment={<Navigate replace to ="/404"/>}/>*/}
+            <Route path="*" element={<Error />} />
         </Routes>
     );
 };

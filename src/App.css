@@ -35,6 +35,11 @@
   width: 30%;
 }
 
+.post__btns{
+  display: flex;
+  flex-direction: column;
+}
+
 .delete__btn{
   border: 2px solid teal;
   background: inherit;
